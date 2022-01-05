@@ -11,7 +11,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const MongoStore = require("connect-mongo");
 
 const User = require("./models/user");
-const MONGO_URL = process.env.MONGO_URL;
+const { MONGO_URL, APP_SECRET } = process.env;
 const PORT = process.env.PORT || 3000;
 
 mongoose.connect(MONGO_URL, {
@@ -26,7 +26,7 @@ app.use(flash());
 // PASSPORT CONFIG
 app.use(
   session({
-    secret: "shibas are the best dogs in the world.",
+    secret: APP_SECRET,
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: MONGO_URL }),
