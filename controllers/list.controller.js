@@ -21,12 +21,13 @@ exports.createList = async (req, res) => {
 exports.getListMovies = async (req, res) => {
   try {
     const { id } = req.params;
-    const { movies, username, public } = await List.findById(id);
+    const { name, movies, username, public } = await List.findById(id);
     if (!public && username.toString() != req.user._id.toString()) {
       req.flash("error", "Not authorized to view the list");
       return res.redirect("/");
     }
-    return res.render("list/show", { movies });
+    console.log(name);
+    return res.render("list/show", { movies, listName: name });
   } catch (err) {
     req.flash("error", err.message);
     return res.redirect("/");

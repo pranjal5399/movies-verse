@@ -1,6 +1,7 @@
 <%- include("../partials/header") %>
     <%- include("../partials/errorMsg")%>
-        <div class="container">
+        <div class="container py-3">
+
             <div class="row">
                 <div class="col-md-4">
                     <img src="<%=movie.Poster%>" class="thumbnail">
@@ -10,7 +11,7 @@
                         <%=movie.Title%>
                     </h2>
 
-                    <div class="dropdown">
+                    <div class="dropdown pb-2">
                         <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">
                             Add to List
                         </button>
@@ -48,7 +49,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="row">
+            <div class="row p-2">
                 <div class="well">
                     <h3>Plot</h3>
                     <%=movie.Plot%>
