@@ -1,0 +1,25 @@
+<%- include("../partials/header") %>
+    <%- include("../partials/errorMsg")%>
+
+        <div id="campgroundHome" class="container ">
+            <div class="row">
+                <% movies.forEach(function(movie) { %>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="card indexCards shadow border-0 mt-4">
+                            <a href="/movies/<%= movie.imdbID %>"><img id="campgroundCard" class="card-img-top"
+                                    src="<%= movie.Poster %>"></a>
+                            <div class="card-body">
+                                <h5 class="card-title text-capitalize">
+                                    <a href="/movies/<%= movie.imdbID %>">
+                                        <%= movie.Title %>
+                                    </a>
+                                </h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+        <%- include("../partials/footer")%>

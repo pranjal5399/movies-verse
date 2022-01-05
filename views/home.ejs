@@ -1,0 +1,48 @@
+<%- include("./partials/header") %>
+    <%- include("./partials/errorMsg") %>
+        <div class="container">
+            <%if(currentUser){%>
+
+                <form class="form-inline" method="POST" action="/lists/create">
+                    <div class="form-group">
+                        <label for="name" class="mr-2">List Name:</label>
+                        <input type="name" class="form-control" name="name" id="name">
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="public">
+                        <label class="form-check-label" for="inlineRadio1">Public</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="private">
+                        <label class="form-check-label" for="inlineRadio2">Private</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger">Create</button>
+                </form>
+                <h2>My Lists:</h2>
+                <div>
+                    <ul class="list-group">
+
+                        <% lists.forEach((list)=>{ %>
+                            <li class="list-group-item">
+                                <a href="/lists/<%=list._id%>">
+                                    <%= list.name %>
+                                </a>
+
+                                <%if(!list.public){%>
+                                    <i class="fas fa-lock ml-2"></i>
+                                    <%} %>
+                            </li>
+
+
+                            <%}) %>
+                    </ul>
+                </div>
+
+
+                <%}else{%>
+                    <h2>Please login to add or view your lists</h2>
+                    <%}%>
+        </div>
+        <%- include("./partials/footer") %>
